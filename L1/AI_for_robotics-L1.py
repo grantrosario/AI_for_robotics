@@ -9,10 +9,8 @@ pMiss = 0.2
 def sense(p, Z):
     q = []
     for entry in range(len(p)):
-        if world[entry] == Z:
-            q.append(p[entry]*pHit)
-        else:
-            q.append(p[entry] * pMiss)
+    	hit = (Z == world[i])
+        q.append(p[entry] * (hit * pHit + (1-hit) * pMiss))
     return q
 
 
