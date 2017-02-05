@@ -11,6 +11,9 @@ def sense(p, Z):
     for entry in range(len(p)):
     	hit = (Z == world[i])
         q.append(p[entry] * (hit * pHit + (1-hit) * pMiss))
+        qSum = sum(q)
+    for entry in range(len(q)):
+    	q[entry] = q[entry] / qSum
     return q
 
 
