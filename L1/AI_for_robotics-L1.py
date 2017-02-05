@@ -1,7 +1,19 @@
 # Lesson 1 of Artificial Intelligence for Robotics by Sebastian Thrun
 
-p=[]
-n=5
-for i in range(n):
-    p.append(1./n)
-print p
+p=[0.2, 0.2, 0.2, 0.2, 0.2]
+world=['green', 'red', 'red', 'green', 'green']
+Z = 'red'
+pHit = 0.6
+pMiss = 0.2
+
+def sense(p, Z):
+    q = []
+    for entry in range(len(p)):
+        if world[entry] == Z:
+            q.append(p[entry]*pHit)
+        else:
+            q.append(p[entry] * pMiss)
+    return q
+
+
+print (sense(p,Z))
