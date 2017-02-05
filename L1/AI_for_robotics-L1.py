@@ -1,6 +1,6 @@
 # Lesson 1 of Artificial Intelligence for Robotics by Sebastian Thrun
 
-p=[0.2, 0.2, 0.2, 0.2, 0.2]
+p=[0, 1, 0, 0, 0]
 world=['green', 'red', 'red', 'green', 'green']
 measurements = ['red', 'green']
 pHit = 0.6
@@ -16,7 +16,14 @@ def sense(p, Z):
     	q[entry] = q[entry] / qSum
     return q
 
-for k in range(len(measurements)):
-	p = sense(p, measurements[k])
+def move(p, U):
+	q = []
+	for i in range(len(p)):
+		q.append(p[(i-U) % len(p)])
+	return q
 
-print (p)
+# for k in range(len(measurements)):
+# 	p = sense(p, measurements[k])
+
+print move(p, 1)
+
