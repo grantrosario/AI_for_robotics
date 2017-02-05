@@ -2,19 +2,21 @@
 
 p=[0.2, 0.2, 0.2, 0.2, 0.2]
 world=['green', 'red', 'red', 'green', 'green']
-Z = 'red'
+measurements = ['red', 'green']
 pHit = 0.6
 pMiss = 0.2
 
 def sense(p, Z):
     q = []
     for entry in range(len(p)):
-    	hit = (Z == world[i])
-        q.append(p[entry] * (hit * pHit + (1-hit) * pMiss))
+    	hit = (Z == world[entry])
+    	q.append(p[entry] * (hit * pHit + (1-hit) * pMiss))
     qSum = sum(q)
     for entry in range(len(q)):
     	q[entry] = q[entry] / qSum
     return q
 
+for k in range(len(measurements)):
+	p = sense(p, measurements[k])
 
-print (sense(p,Z))
+print (p)
