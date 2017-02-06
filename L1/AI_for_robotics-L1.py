@@ -1,8 +1,9 @@
 # Lesson 1 of Artificial Intelligence for Robotics by Sebastian Thrun
 
-p=[0, 1, 0, 0, 0]
+p=[0.2, 0.2, 0.2, 0.2, 0.2]
 world=['green', 'red', 'red', 'green', 'green']
 measurements = ['red', 'green']
+motions = [1,1]
 pHit = 0.6
 pMiss = 0.2
 pExact = 0.8
@@ -31,5 +32,9 @@ def move(p, U):
 # for k in range(len(measurements)):
 # 	p = sense(p, measurements[k])
 
-print move(p, 1)
+for k in range(len(measurements)):
+	p = sense(p, measurements[k])
+	p = move(p, motions[k])
+print (p)
+
 
